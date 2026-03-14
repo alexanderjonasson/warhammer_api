@@ -18,7 +18,7 @@ app.get("/api/units", async (req, res) => {
     const units = await Unit.find().sort({ faction: 1, name: 1 });
     res.json(units);
   } catch (err) {
-    console.error("❌ Fetch error:", err);
+    console.error("Fetch error:", err);
     res.status(500).json({ error: "Could not fetch units" });
   }
 });
@@ -32,13 +32,13 @@ async function start() {
     }
 
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("✅ Connected to MongoDB Atlas");
+    console.log("Connected to MongoDB Atlas");
 
     app.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Server listening on port ${PORT}`);
+      console.log(`Server listening on port ${PORT}`);
     });
   } catch (err) {
-    console.error("❌ Startup error:", err);
+    console.error("Startup error:", err);
     process.exit(1);
   }
 }
