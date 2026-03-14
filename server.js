@@ -31,13 +31,12 @@ async function start() {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ Connected to MongoDB Atlas");
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Server listening on http://localhost:${PORT}`);
-    });
-  } catch (err) {
-    console.error("❌ Startup error:", err.message);
-    process.exit(1);
-  }
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server listening on port ${PORT}`);
+});
+} catch (err) {
+  console.error("❌ Startup error:", err);
+  process.exit(1);
 }
 
 start();
